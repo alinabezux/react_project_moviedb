@@ -3,7 +3,6 @@ import {useEffect} from "react";
 
 import {genresActions} from "../../redux";
 
-import css from './Genres.module.css'
 
 const Genres = () => {
 
@@ -22,7 +21,7 @@ const Genres = () => {
     }
 
     return (
-        <div className={css.genres_wrap}>
+        <div className={"genres_wrap"}>
             {
                 genres?.genres?.map(genre => <div key={genre.id}><button onClick={() => handleSubmit(genre.id)}>{genre.name}</button></div>)
             }

@@ -15,16 +15,18 @@ const MoviesList = () => {
     }, [page, dispatch])
 
     return (
-        <div>
-            {
-                movies.results?.map(movie => <MovieCard key={movie.id} movie={movie}/>)
-            }
-            {loading && <h1>Loading...........</h1>}
-            {error && <h1>Error:(</h1>}
-            <div>
-                <button onClick={() => dispatch(moviesActions.prevPage(1))}>Prev</button>
+        <div className={"movies"}>
+            <div className={"movies_list"}>
+                {
+                    movies.results?.map(movie => <MovieCard key={movie.id} movie={movie}/>)
+                }
+                {loading && <h1>Loading...........</h1>}
+                {error && <h1>Error:(</h1>}
+            </div>
+            <div className={"pagination"}>
+                <button className={"pag_btn"} onClick={() => dispatch(moviesActions.prevPage(1))}>Prev</button>
                 <h3>{page}</h3>
-                <button onClick={() => dispatch(moviesActions.nextPage(1))}>Next</button>
+                <button className={"pag_btn"} onClick={() => dispatch(moviesActions.nextPage(1))}>Next</button>
             </div>
         </div>
     );

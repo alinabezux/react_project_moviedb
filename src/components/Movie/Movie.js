@@ -17,7 +17,7 @@ const Movie = () => {
     return (
         <div>
             <div>
-                <img src={'https://image.tmdb.org/t/p/w200/' + currentMovie?.poster_path}
+                <img src={'https://image.tmdb.org/t/p/w500/' + currentMovie?.poster_path}
                      alt={currentMovie?.original_title}/>
             </div>
             <div>

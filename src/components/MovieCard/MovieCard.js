@@ -1,21 +1,35 @@
 import {Link} from "react-router-dom";
 
-import css from './MovieCard.module.css'
-
 import {Stars} from "../Stars/Stars";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
+import {genresActions} from "../../redux";
 
 const MovieCard = ({movie}) => {
 
+    const {genres} = useSelector(state => state.genresReducer);
+    const findGenre = (id) => {
+        const genre = genres?.genres?.find(value => value.id === id)
+        return genre?.name;
+    }
+
     return (
         <Link to={`/movie/${movie.id}`}>
-            <div className={css.container_MovieCard}>
-                <div className={"movie_image"}>
+            <div className={"movie"}>
+                <h2>{movie.original_title}</h2>
+                {
+                    <img src={'https://image.tmdb.org/t/p/original/' + movie.poster_path} alt={movie.original_title}/>
+                }
+                <h2>{(movie.release_date).substring(0, 4)}</h2>
+                <div className={"movie_card_genres"}>
                     {
-                        <img src={'https://image.tmdb.org/t/p/w200/' + movie.poster_path} alt={movie.original_title}/>
+                        movie?.genre_ids.map(value => <div className={"genre_item"} key={value}> {findGenre(value)}</div>)
                     }
                 </div>
-                <h2>{movie.original_title}</h2>
-                <Stars rating={movie.vote_average}/>
+                <div className={"movie_rating"}>
+                    <h3>Rating: <i>{movie.vote_average}</i></h3>
+                    <Stars rating={movie.vote_average}/>
+                </div>
             </div>
         </Link>
 

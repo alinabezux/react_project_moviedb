@@ -5,8 +5,7 @@ import {genresService} from "../../services";
 let initialState = {
     genres: [],
     genre: null,
-    loading: true,
-    currentGenres: [],
+    loading: true
 }
 
 let getAllGenres = createAsyncThunk(
@@ -27,13 +26,6 @@ const genresSlice = createSlice({
     reducers: {
         getGenre: (state, action) => {
             state.genre = action.payload
-        },
-        selectGenre: (state, action) => {
-            state.currentGenres.push(action.payload);
-        },
-        deleteGenre: (state, action) => {
-            const index = state.currentGenres.findIndex(genre => genre.id === action.payload);
-            state.currentGenres.splice(index, 1)
         }
     },
     extraReducers: builder =>
@@ -42,11 +34,14 @@ const genresSlice = createSlice({
                 state.genres = action.payload
                 state.loading = false
             })
+            .addCase(getAllGenres.pending, (state, action) => {
+                state.loading = true
+            })
 })
 
-const {reducer: genresReducer, actions: {getGenre, selectGenre, deleteGenre}} = genresSlice;
+const {reducer: genresReducer, actions: {getGenre}} = genresSlice;
 
 const genresActions = {
-    getAllGenres, getGenre, deleteGenre, selectGenre
+    getAllGenres, getGenre
 }
 export {genresReducer, genresActions}

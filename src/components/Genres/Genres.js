@@ -6,7 +6,7 @@ import {genresActions} from "../../redux";
 
 const Genres = () => {
 
-    const {genres, currentGenres} = useSelector(state => state.genresReducer);
+    const {genres} = useSelector(state => state.genresReducer);
 
     const dispatch = useDispatch();
 
@@ -14,16 +14,10 @@ const Genres = () => {
         dispatch(genresActions.getAllGenres())
     }, [dispatch])
 
-    const handleSubmit = (id) => {
-        if (currentGenres?.includes(id)) {
-            dispatch(genresActions.deleteGenre(id))
-        } else dispatch(genresActions.selectGenre(id))
-    }
-
     return (
         <div className={"genres_wrap"}>
             {
-                genres?.genres?.map(genre => <div key={genre.id}><button onClick={() => handleSubmit(genre.id)}>{genre.name}</button></div>)
+                genres?.genres?.map(genre => <div key={genre.id}><button>{genre.name}</button></div>)
             }
         </div>
     )

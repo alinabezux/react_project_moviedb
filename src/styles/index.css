@@ -74,9 +74,9 @@ a {
 }
 
 .genre_item {
-    background: black;
+    background: #cb2828;
     color: white;
-    border-radius: 10%;
+    border-radius: 20px;
     padding: 5px 15px;
 }
 

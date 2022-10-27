@@ -1,9 +1,8 @@
 import {Link} from "react-router-dom";
 
 import {Stars} from "../Stars/Stars";
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
-import {genresActions} from "../../redux";
+import {useSelector} from "react-redux";
+
 
 const MovieCard = ({movie}) => {
 
@@ -23,7 +22,8 @@ const MovieCard = ({movie}) => {
                 <h2>{(movie.release_date).substring(0, 4)}</h2>
                 <div className={"movie_card_genres"}>
                     {
-                        movie?.genre_ids.map(value => <div className={"genre_item"} key={value}> {findGenre(value)}</div>)
+                        movie?.genre_ids.map(value => <div className={"genre_item"}
+                                                           key={value}> {findGenre(value)}</div>)
                     }
                 </div>
                 <div className={"movie_rating"}>

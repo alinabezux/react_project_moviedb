@@ -10,7 +10,7 @@ function App() {
             <Route path={'/'} element={<MainLayout/>}>
                 <Route index element={<Navigate to={'/movie'}/>}/>
                 <Route path={'/movie'} element={<MoviesList/>}/>
-                <Route path={':id'} element={<Movie/>}/>
+                <Route path={'/movie/details`'} element={<Movie/>}/>
             </Route>
         </Routes>
     );

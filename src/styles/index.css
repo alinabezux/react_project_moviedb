@@ -109,3 +109,17 @@ a {
     height: 50px;
     width: 100px;
 }
+.search input{
+    width:250px;
+    height: 40px;
+    margin: 0 10px ;
+    border-radius: 20px;
+    text-align: center;
+}
+.search button{
+    height: 40px;
+    width: 80px;
+    border-radius: 20px;
+}
+.search{
+}
